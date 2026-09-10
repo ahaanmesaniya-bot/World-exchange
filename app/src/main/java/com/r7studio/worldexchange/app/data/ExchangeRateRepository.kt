@@ -29,8 +29,12 @@ class ExchangeRateRepository {
                 val ratesObj = json.optJSONObject("rates")
                     ?: return@withContext RatesResult.Failure("No rates in response")
                 val map = mutableMapOf<String, Double>()
-                ratesObj.keys().forEach { key ->
-                    map[key] = ratesObj.getDouble(key)
+                val keyNames = ratesObj.names()
+                if (keyNames != null) {
+                    for (i in 0 until keyNames.length()) {
+                        val key = keyNames.getString(i)
+                        map[key] = ratesObj.getDouble(key)
+                    }
                 }
                 RatesResult.Success(map)
             }
