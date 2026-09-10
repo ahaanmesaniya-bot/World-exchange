@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,8 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Comment
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Comment
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Description
@@ -83,7 +84,7 @@ fun SettingsScreen(viewModel: MainViewModel, onNavigate: (SubScreen) -> Unit) {
                 onClick = { onNavigate(SubScreen.ABOUT) }
             )
             SettingsItem(
-                icon = Icons.AutoMirrored.Filled.Comment,
+                icon = Icons.Default.Comment,
                 title = "Feedback / Support",
                 onClick = {
                     val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
@@ -98,7 +99,7 @@ fun SettingsScreen(viewModel: MainViewModel, onNavigate: (SubScreen) -> Unit) {
 }
 
 @Composable
-private fun SettingsGroup(content: @Composable Column.() -> Unit) {
+private fun SettingsGroup(content: @Composable ColumnScope.() -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -128,7 +129,7 @@ private fun SettingsItem(
             Text(title, fontWeight = FontWeight.SemiBold, color = if (titleColor != Color.Unspecified) titleColor else MaterialTheme.colorScheme.onSurface)
         }
         Icon(
-            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            Icons.Default.KeyboardArrowRight,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant
         )
