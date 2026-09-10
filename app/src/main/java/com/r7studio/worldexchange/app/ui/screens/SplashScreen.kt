@@ -59,7 +59,7 @@ fun SplashScreen(onFinish: () -> Unit) {
             painter = painterResource(id = R.drawable.r7studio_logo),
             contentDescription = "R7 Studio",
             modifier = Modifier
-                .size(180.dp)
+                .size(240.dp)
                 .scale(scale.value)
                 .alpha(animatedAlpha)
         )
